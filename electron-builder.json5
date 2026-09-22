@@ -1,0 +1,57 @@
+// @see - https://www.electron.build/configuration/configuration
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "com.chesstrainer.app",
+  "asar": true,
+  "productName": "Chess Trainer",
+  "directories": {
+    "output": "release/${version}"
+  },
+  "files": [
+    "dist",
+    "dist-electron"
+  ],
+  "extraResources": [
+    {
+      "from": "resources/stockfish",
+      "to": "stockfish",
+      "filter": ["**/*"]
+    },
+    {
+      "from": "resources/icon.png",
+      "to": "icon.png"
+    },
+    {
+      "from": "resources/icon.ico",
+      "to": "icon.ico"
+    }
+  ],
+  "mac": {
+    "target": ["dmg"],
+    "icon": "resources/icon.png",
+    "artifactName": "${productName}-Mac-${version}.${ext}",
+    "category": "public.app-category.games"
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "resources/icon.ico",
+    "artifactName": "${productName}-Windows-${version}-Setup.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false
+  },
+  "linux": {
+    "target": ["AppImage"],
+    "icon": "resources/icon.png",
+    "artifactName": "${productName}-Linux-${version}.${ext}",
+    "category": "Game"
+  }
+}
