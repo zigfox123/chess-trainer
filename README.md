@@ -119,7 +119,7 @@ chmod +x resources/stockfish/stockfish-macos
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/chess-trainer.git
+git clone https://github.com/zigfox123/chess-trainer.git
 cd chess-trainer
 
 # Install dependencies
